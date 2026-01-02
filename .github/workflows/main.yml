@@ -432,7 +432,7 @@ jobs:
 
 
           # 清理环境并合并config
-          make ARCH=arm64 mrproper
+          sudo make ARCH=arm64 mrproper
           scripts/kconfig/merge_config.sh \
           arch/arm64/configs/gki_defconfig \
           arch/arm64/configs/vendor/kalama_GKI.config \
@@ -442,7 +442,7 @@ jobs:
 
 
           # 生成.config
-          make -j$(nproc --all) \
+          sudo make -j$(nproc --all) \
           LLVM=1 \
           ARCH=arm64 \
           CROSS_COMPILE=aarch64-linux-gnu- \
@@ -456,8 +456,8 @@ jobs:
           cp gki_defconfig arch/arm64/configs/vendor
 
           # 编译Image
-          make -j$(nproc --all) LLVM=1 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CC="ccache clang" LD="ld.lld" HOSTLD=ld.lld O=out KCFLAGS+=-O2 KCFLAGS+=-Wno-error vendor/gki_defconfig &&
-          make -j$(nproc --all) LLVM=1 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CC="$(pwd)/cc-wrapper" LD="$(pwd)/ld-wrapper" HOSTLD=ld.lld O=out KCFLAGS+=-O2 KCFLAGS+=-Wno-error Image
+          sudo make -j$(nproc --all) LLVM=1 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CC="ccache clang" LD="ld.lld" HOSTLD=ld.lld O=out KCFLAGS+=-O2 KCFLAGS+=-Wno-error vendor/gki_defconfig &&
+          sudo make -j$(nproc --all) LLVM=1 ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CC="$(pwd)/cc-wrapper" LD="$(pwd)/ld-wrapper" HOSTLD=ld.lld O=out KCFLAGS+=-O2 KCFLAGS+=-Wno-error Image
           
           # 编译后时间劫持二次校验
           echo "--- 编译后环境时间: $(LD_PRELOAD=$PRELOAD_LIBS date) ---"
