@@ -61,7 +61,7 @@ jobs:
           echo "拉取源码..."
           git clone --depth 1 -b sixteen-qpr1 https://github.com/Winkmoon/android_kernel_oneplus_sm8550 common
           echo "拉取内核模块..."
-          git clone --depth 1 -b sixteen-qpr1 https://github.com/OnePlus12R-development/android_kernel_oneplus_sm8550-modules vendor
+          git clone --depth 1 -b sixteen-qpr1 https://github.com/OnePlus12R-development/android_kernel_oneplus_sm8550-modules sm8550-modules
           echo "从cctv18拉取llvm-Clang20工具链..." &&
           mkdir -p clang20 &&
           aria2c -s16 -x16 -k1M https://github.com/cctv18/oneplus_sm8650_toolchain/releases/download/LLVM-Clang20-r547379/clang-r547379.zip -o clang.zip &&
