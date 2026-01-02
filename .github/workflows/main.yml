@@ -2,7 +2,9 @@ name: build ShirokoNeko-Kernel
 
 env:
   TZ: Asia/Shanghai
+  ANDROID_VERSION: 'android13'
   KERNEL_VERSION: '5.15'
+  KERNEL_NAME: 'android13-11-o-gca13bffobf09'
 
 on:
   workflow_dispatch:
@@ -82,7 +84,7 @@ jobs:
 
       - name: 配置ccache目录
         run: |
-          echo "CCACHE_DIR=$HOME/.ccache_6.1.118" >> $GITHUB_ENV
+          echo "CCACHE_DIR=$HOME/.ccache_5.15" >> $GITHUB_ENV
           echo "CCACHE_MAXSIZE=3G" >> $GITHUB_ENV
           echo "当前磁盘空间："
           df -h
