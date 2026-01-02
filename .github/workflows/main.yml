@@ -433,9 +433,9 @@ jobs:
           # 合并config
           scripts/kconfig/merge_config.sh \
           arch/arm64/configs/gki_defconfig \
-          vendor/kalama_GKI.config \
-          vendor/oplus/kalama_GKI.config \
-          vendor/debugfs.config
+          arch/arm64/configs/vendor/kalama_GKI.config \
+          arch/arm64/configs/vendor/oplus/kalama_GKI.config \
+          arch/arm64/configs/vendor/debugfs.config
 
           mkdir out
           cp .config out/.config
